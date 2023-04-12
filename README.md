@@ -18,7 +18,7 @@ For running this operation, here the tools I used:
 ## Kali Setup
 Here, I'm running a Virtual Kali linux on my Windows Machine. For virtualization, I used the VMWare Workstation. 
 
-### Plug in Network Adapter
+## Plug in Network Adapter
 First thing, is plug in the WiFi network adapter to my computer. After I plug-in, VMWare asked me, where I want to connect this network adapter? In my example, I want to connect to the Kali Virtual Machine. 
 
 ![Screenshot (55)](https://user-images.githubusercontent.com/93491482/231320658-4c345144-0dfe-4908-a717-f6c3a7fdb493.png)
