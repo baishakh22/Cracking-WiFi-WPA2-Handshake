@@ -181,7 +181,7 @@ Notice, there a whole bunch of deauthentication are sending from second terminal
 
 In my phone, it's moved from one access point to the other. 
 
-[photo]
+![IMG_7263](https://user-images.githubusercontent.com/93491482/231345133-4974a238-3053-410c-9b7b-13c15d94ae24.PNG)
 
 So, I will try connect back from my phone to the **encrptedMuhfat** network. as soon as I reconnect to **encryptedMuhfat** from my phone, in the 1st terminal, it displays WPA Handshake. 
 
