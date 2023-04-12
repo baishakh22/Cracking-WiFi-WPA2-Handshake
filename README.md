@@ -11,9 +11,11 @@ For running this operation, here the tools I used:
 
 *Note: Why we can't use our own personal built-in WiFi adapter? Because normally our built-in WiFi adapter might doesn't have monitor and injection mode. They only have the managed mode. If you have it, you can use it.*
 
-## Begining the Process
 
-### Kali Setup
+
+
+
+## Kali Setup
 Here, I'm running a Virtual Kali linux on my Windows Machine. For virtualization, I used the VMWare Workstation. 
 
 ### Plug in Network Adapter
@@ -22,7 +24,7 @@ First thing, is plug in the WiFi network adapter to my computer. After I plug-in
 ![Screenshot (55)](https://user-images.githubusercontent.com/93491482/231320658-4c345144-0dfe-4908-a717-f6c3a7fdb493.png)
 
 
-### Varify that network adapter is recognized by Kali Linux
+## Varify that network adapter is recognized by Kali Linux
 Now, after plug-in the network adapter, we need to varify that our Kali Machine recognize this Network Adapter. For this, we need to open up a terminal window, and type the following command to see IP addresses and interfaces on this virtual machine:
 
 ```
@@ -40,17 +42,17 @@ We can also use the ```iwconfig```, which shows us that we have a WiFi network a
 We are going to change to *Monitor Mode* from *Managed Mode*. But before make sure is that we got a WiFi network adapter that recognize by Kali. 
 
 
-### A WPA2 Network to Attack or Crack
+## A WPA2 Network to Attack or Crack
 For this demonstration, I used my personal built Raspbery Pi router. This is the network, which I personally owned. 
 
 ***Note: Never ever try on this on actual WiFi router without owner's concern. Just attack on the network that you own or have permission to attack. As a ethical hacker, our job is to follow the legal way.***
 
 
-### Check your Network Adapter is on Managed Mode.
+## Check your Network Adapter is on Managed Mode.
 Once again, we are going to check that, our network adapter is on Managed mode by using the ```iwconfig``` command. 
 
 
-### Kali Version
+## Kali Version
 Before we start the attack, we need to make sure our kali in up-to-date and current version. To check this we can use those two following command. Either one is fine.
 
 ```
@@ -64,7 +66,7 @@ uname -a
 ![Screenshot_2023-04-11_17_57_16](https://user-images.githubusercontent.com/93491482/231328664-d8ee793d-0ed7-4254-9f09-b791a7128588.png)
 
 
-### Kill Conflicting Processor with airmon-ng
+## Kill Conflicting Processor with airmon-ng
 Before we start the process, we need to kill any conflicting processes that might create future issues. To check for any conflicting processes and kill them, we are using the following command:
 
 ```
@@ -76,7 +78,7 @@ sudo airmon-ng check kill
 we can see that ```wpa_supplicant``` was killed. In your example, you may see a whole bunch of other processes that get discovered and get killed and that's fine. Just make sure, you type this command so that you don't have any conflicting processes that interfere with what we're trying to do. 
 
 
-### Put interface into Monitor Mode from Managed Mode
+## Put interface into Monitor Mode from Managed Mode
 Our ```iwconfig``` shows us that the wireless network interface is in managed mode, but what we wanna do is put into monitor mode by using this following  command:
 
 ```
@@ -96,7 +98,7 @@ sudo airmon-ng
 ***Note: Now we can notice that the wireless interface is now ```wlan0mon```. Before it was ```wlan0``` but now it's changed to ```wlan0mon```***
 
 
-### Discover the victim network with airodump-ng
+## Discover the victim network with airodump-ng
 Now, let's discover the victim's access points. To do that we are use the following command:
 
 ```
@@ -126,7 +128,7 @@ The upper data block shows the access points found:
 | ESSID	| The network name. Sometimes hidden |
 
 
-### Use airodump-ng to view only one network
+## Use airodump-ng to view only one network
 We can use the following command to see only that access point:
 
 ```
@@ -147,7 +149,7 @@ To do that, I use my personal phone and try to connect to that network. As I con
 After confirm that it is successfully work, we can cancle that.
 
 
-### airodump-ng capture WPA2 four way handshake
+## airodump-ng capture WPA2 four way handshake
 Now, we are use the following command, to capture the traffic with four way handshake in a ```.cap``` file. 
 
 ```
@@ -169,7 +171,7 @@ After enter above command, here we can see in the terminal:
 
 We can leave this terminal for a section and open another terminal.
 
-### Use aireplay-ng to deau thenticate client
+## Use aireplay-ng to deau thenticate client
 In the second window, deauthenticate clients from the network by using the following command:
 
 ```
@@ -188,7 +190,7 @@ So, I will try connect back from my phone to the **encrptedMuhfat** network. as 
 ![Screenshot_2023-04-11_18_13_09](https://user-images.githubusercontent.com/93491482/231339820-81dd4a48-a0d3-4d8c-ae79-34136ba83e4a.png)
 
 
-### WPA2 four way handshake was captured
+## WPA2 four way handshake was captured
 We can see the WPA handshake was captured. Client is not able to connect to the network but we capture the handshake. Then we can stop the running processes by command + C (mac) in both window. 
 
 This is a another type of attack. You can do a denial of service attack against an access point just to stop anyone connecting to it network access. 
@@ -198,7 +200,7 @@ Now if use use ```ls``` we can see we capture the file, the file name is ```hack
 ![Screenshot_2023-04-11_18_15_09](https://user-images.githubusercontent.com/93491482/231340631-2aa593af-05c6-4d80-9968-df5d9731dd13.png)
 
 
-### Use Wireshark to view WPA2 four way hand shake
+## Use Wireshark to view WPA2 four way hand shake
 Now use can see the file using the wireshark by the following command:
 
 ```
@@ -220,7 +222,7 @@ If we notice the message two, we can see WPA key data send from the phone to the
 Now we can close that wireshark. 
 
 
-### Put Interface back into managed mode
+## Put Interface back into managed mode
 At the moment, the wifi interface is still in monitor mode. So, what I'll do is stop monitor mode by using the following command:
 
 ```
@@ -233,7 +235,7 @@ sudo airmon-ng stop wlan0mon
 ***Note: Another reason use the VM is in this example, I've got two network adapter. The Kali Linux machine is actually using the WiFi adapter of Windows to give it internet connectivity. But external ALFA adapter is in monitor mode.***
 
 
-### Crack WPA2 password with aircrack-ng
+## Crack WPA2 password with aircrack-ng
 Now if we use ```ls``` again, it shows me the captured fil that we wanna use to cracking. And to do that, we are going to use this command:
 
 ```
