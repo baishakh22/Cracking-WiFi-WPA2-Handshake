@@ -11,4 +11,30 @@ For running this operation, here the tools I used:
 
 *Note: Why we can't use our own personal built-in WiFi adapter? Because normally our built-in WiFi adapter might doesn't have monitor and injection mode. They only have the managed mode. If you have it, you can use it.*
 
+## Begining the Process
+
+### Kali Setup
+Here, I'm running a Virtual Kali linux on my Windows Machine. For virtualization, I used the VMWare Workstation. 
+
+### Plug in Network Adapter
+First thing, is plug in the WiFi network adapter to my computer. After I plug-in, VMWare asked me, where I want to connect this network adapter? In my example, I want to connect to the Kali Virtual Machine. 
+
+![Screenshot (55)](https://user-images.githubusercontent.com/93491482/231320658-4c345144-0dfe-4908-a717-f6c3a7fdb493.png)
+
+### Varify that network adapter is recognized by Kali Linux
+Now, after plug-in the network adapter, we need to varify that our Kali Machine recognize this Network Adapter. For this, we need to open up a terminal window, and type the following command to see IP addresses and interfaces on this virtual machine:
+
+```
+ip addr
+```
+
+![Screenshot_2023-04-11_17_52_37](https://user-images.githubusercontent.com/93491482/231321157-deba7422-16ec-48b6-bb3e-484f71fc4c48.png)
+
+This is what we are wanna see, we've got an wireless LAN adapter, which at this moment is down. But it's important that we can see a WiFi network adapter. 
+
+
+
+
+
+
 
